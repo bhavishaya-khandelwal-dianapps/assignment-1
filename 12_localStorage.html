@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage</title>
+</head>
+<!--! CSS goes from here -->
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        width: 100%;
+        height: 100vh;
+        background-color: black;
+    }
+
+    .container {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .row {
+        text-align: center;
+    }
+
+    #inputField {
+        padding: 0.5rem;
+        width: 100%;
+        outline: none;
+        font-size: 1.1rem;
+        font-weight: 700;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    button {
+        padding: 0.5rem 1rem;
+        outline: none;
+        border : none;
+        background-color: yellow;
+        border-radius: 2rem;
+        font-size: 1rem;
+        margin : 0 1rem;
+        font-weight: 600;
+    }
+
+    button:hover {
+        color: yellow;
+        background-color: black;
+        border : 3px solid yellow;
+    }
+
+    h3 {
+        color: rgb(54, 216, 113);
+        margin-top: 2rem;
+    }
+
+</style>
+<body>
+    <!--! HTML goes from here  -->
+    <div class="container">
+        <div class="row">
+            <p style="color: white;" id="show_name"></p>
+            <input type="text" id="inputField" placeholder="Enter username...." autocomplete="off">
+            <button id="add">Add Data</button>
+            <button id="get">Get Data</button>
+            <button id="remove">Remove Data</button>
+            <h3 id="name"></h3>
+        </div>
+    </div>
+
+
+
+    <!--! JavaScript goes from here -->
+    <script type="text/javascript">
+        let data = document.getElementById("inputField");
+        let addData = document.getElementById("add");
+        let getData = document.getElementById("get");
+        let removeData = document.getElementById("remove");
+        let displayName = document.getElementById("name");
+
+        let userName = localStorage.getItem("userName");
+        console.log(userName);
+        if(userName !== null) {
+            displayName.textContent = JSON.parse(userName);
+        }
+
+        const addDataToLS = () => {
+            let userName = data.value;
+            if(data.value !== "") {
+                userName = JSON.stringify(userName);
+                localStorage.setItem("userName", userName);
+                data.value = "";
+                displayName.textContent = JSON.parse(userName);
+            }
+            else {
+                alert("Please enter your username first");
+            }
+        }
+
+        const getDataFromLS = () => {
+            let userName = localStorage.getItem("userName");
+            console.log(userName);
+            if(userName !== null) {
+                displayName.textContent = JSON.parse(userName);
+            }
+            else {
+                alert("First store the username into the local storage");
+            }
+        }
+
+        const removeDataFromLS = () => {
+            localStorage.removeItem("userName");
+            displayName.textContent = "";
+            data.value = "";
+        }
+
+        addData.addEventListener('click', addDataToLS);
+        getData.addEventListener('click', getDataFromLS);
+        removeData.addEventListener('click', removeDataFromLS);
+
+    </script>
+</body>
+</html>

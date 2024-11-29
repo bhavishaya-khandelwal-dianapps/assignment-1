@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic DOM</title>
+</head>
+
+<!--! CSS goes from here  -->
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        width: 100%;
+        height: 100vh;
+        background-color: black;
+    }
+
+    h1 {
+        padding-top: 2rem;
+        color: blueviolet;
+        text-align: center;
+    }
+
+    div {
+        padding-top: 2rem;
+        text-align: center;
+        color: yellow;
+        font-size: 2rem;
+    }
+</style>
+
+<body>
+    <!--! HTML Goes from here  -->
+    <!--*  10. *Basic DOM* - Write a script to: -->
+    <!--todo   a. Select an element by its id and change its content. -->
+    <!--todo   b. Add a new element to the DOM. -->
+
+    <h1 id="heading">Header Goes From Here</h1>
+
+
+
+
+
+    <!--! JavaScript goes from here  -->
+    <script type="text/javascript">
+
+        // Answer (a) Select an element by its id and change its content.
+        let heading = document.getElementById("heading");
+        console.log(heading);
+        heading.textContent = "Heading starts from here.......";
+
+
+
+        // Answer (b) : Add a new element to the DOM 
+        // Step 1 : Create a new element using createElement
+        let newElement = document.createElement("div");
+
+        // Step 2 : Append thid element to our body of HTML 
+        document.body.appendChild(newElement);
+
+        // Step 3 : Add some text to it 
+        newElement.textContent = "Hii, i am a new DIV";
+
+    </script>
+</body>
+</html>

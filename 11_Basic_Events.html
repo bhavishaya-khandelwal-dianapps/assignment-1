@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Events</title>
+</head>
+<!--! CSS goes from here  -->
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        width: 100%;
+        height: 100vh;
+        background-color: #f0f0f0;
+    }
+
+    .container {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    button {
+        padding: 0.7rem 1.5rem;
+        color: purple;
+        background-color: pink;
+        font-size: 1.1rem;
+        font-weight: 700;
+        border-radius: 2rem;
+        border: none;
+        border : 3px solid purple;
+        box-shadow: -3px 4px 5px pink;
+    }
+
+    button:hover {
+        color: pink;
+        background-color: purple;
+        border : 3px solid pink;
+        box-shadow: 3px 4px 5px purple;
+    }
+
+</style>
+<body>
+    <!--! HTML goes from here  -->
+    <!--* 11. *Basic Events* - Write a program to change the background color of a button when it is clicked. -->
+
+    <div class="container">
+        <button id="myBtn">
+            Change BG Color
+        </button>
+    </div>
+
+
+
+
+    <!--! JavaScript goes from here  -->
+    <script type="text/javascript"> 
+        // Step-1 :- Get the btn 
+        let btn = document.querySelector("#myBtn");
+
+        
+        // Step-3 : Make a function to change the background color 
+        const chageBackgroundColor = () => {
+            if(document.body.style.backgroundColor == "black") {
+                document.body.style.backgroundColor = "#f0f0f0";
+                btn.style.backgroundColor = "pink";
+                btn.style.color = "purple";
+            }
+            else {
+                document.body.style.backgroundColor = "black";
+                btn.style.backgroundColor = "white";
+            }            
+        }
+
+        // Step-2 :- Add event listener to this btn 
+        btn.addEventListener('click', chageBackgroundColor);
+
+    </script>
+</body>
+</html>
